@@ -1,4 +1,6 @@
 require 'ostruct'
+require 'test/unit/assertions'
+include Test::Unit::Assertions
 
 test_arr = [
   'nop +0',
@@ -116,8 +118,8 @@ def part2(input)
   end
 end
 
-puts part1(test_arr)
+assert_equal part1(test_arr), 5
 puts part1(input_arr)
 
-puts part2(test_arr)
+assert_equal part2(test_arr), 8
 puts part2(input_arr)

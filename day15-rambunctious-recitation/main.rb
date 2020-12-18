@@ -1,4 +1,7 @@
-test = '0,3,6'
+require 'test/unit/assertions'
+include Test::Unit::Assertions
+
+test_1 = '0,3,6'
 test_2 = '1,3,2'
 test_3 = '2,1,3'
 test_4 = '1,2,3'
@@ -49,17 +52,17 @@ class Game
   end
 end
 
-def play(test, round)
-  Game.new(test).run(round).last
+def play(input, round)
+  Game.new(input).run(round).last
 end
 
-puts play(test, 2020)
-puts play(test_2, 2020)
-puts play(test_3, 2020)
-puts play(test_4, 2020)
-puts play(test_5, 2020)
-puts play(test_6, 2020)
-puts play(test_7, 2020)
-puts play(input, 2020)
+assert_equal play(test_1, 2020), 436
+assert_equal play(test_2, 2020), 1
+assert_equal play(test_3, 2020), 10
+assert_equal play(test_4, 2020), 27
+assert_equal play(test_5, 2020), 78
+assert_equal play(test_6, 2020), 438
+assert_equal play(test_7, 2020), 1836
 
+puts play(input, 2020)
 puts play(input, 30000000)

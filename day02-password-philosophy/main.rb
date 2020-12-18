@@ -1,4 +1,6 @@
 require 'ostruct'
+require 'test/unit/assertions'
+include Test::Unit::Assertions
 
 test_arr = ['1-3 a: abcde', '1-3 b: cdefg', '2-9 c: ccccccccc']
 
@@ -34,8 +36,8 @@ def valid_password_count(input, policy)
   end
 end
 
-puts valid_password_count(test_arr, :policy_1)
+assert_equal valid_password_count(test_arr, :policy_1), 2
 puts valid_password_count(input_arr, :policy_1)
 
-puts valid_password_count(test_arr, :policy_2)
+assert_equal valid_password_count(test_arr, :policy_2), 1
 puts valid_password_count(input_arr, :policy_2)

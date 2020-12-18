@@ -1,4 +1,6 @@
 require 'ostruct'
+require 'test/unit/assertions'
+include Test::Unit::Assertions
 
 test_arr = [
   '939',
@@ -81,13 +83,13 @@ def part2(input)
   timestamp
 end
 
-puts part1(test_arr)
+assert_equal part1(test_arr), 295
 puts part1(input_arr)
 
-puts part2(test_arr)
-puts part2(test_arr_2)
-puts part2(test_arr_3)
-puts part2(test_arr_4)
-puts part2(test_arr_5)
-puts part2(test_arr_6)
+assert_equal part2(test_arr), 1068781
+assert_equal part2(test_arr_2), 3417
+assert_equal part2(test_arr_3), 754018
+assert_equal part2(test_arr_4), 779210
+assert_equal part2(test_arr_5), 1261476
+assert_equal part2(test_arr_6), 1202161486
 puts part2(input_arr)

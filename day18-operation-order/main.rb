@@ -1,3 +1,6 @@
+require 'test/unit/assertions'
+include Test::Unit::Assertions
+
 test_expression = '1 + 2 * 3 + 4 * 5 + 6'
 
 input_arr = File.open(File.join(File.dirname(__FILE__), 'input.txt')).read().split("\n")
@@ -18,7 +21,7 @@ def calc_expression_1(expression)
   num
 end
 
-puts calc_expression_1(test_expression)
+assert_equal calc_expression_1(test_expression), 71
 
 def calc_expression_2(expression)
   capture = ADDITIONS_REGEX.match(expression).to_s
@@ -29,7 +32,7 @@ def calc_expression_2(expression)
   calc_expression_1(expression)
 end
 
-puts calc_expression_2(test_expression)
+assert_equal calc_expression_2(test_expression), 231
 
 def calc_operation(operation, fn)
   capture = PARENTHESES_REGEX.match(operation).to_s
@@ -46,17 +49,17 @@ test_operation_3 = '5 + (8 * 3 + 9 + 3 * 4 * 3)'
 test_operation_4 = '5 * 9 * (7 * 3 * 3 + 9 * 3 + (8 + 6 * 4))'
 test_operation_5 = '((2 + 4 * 9) * (6 + 9 * 8 + 6) + 6) + 2 + 4 * 2'
 
-puts calc_operation(test_operation_1.dup, :calc_expression_1)
-puts calc_operation(test_operation_2.dup, :calc_expression_1)
-puts calc_operation(test_operation_3.dup, :calc_expression_1)
-puts calc_operation(test_operation_4.dup, :calc_expression_1)
-puts calc_operation(test_operation_5.dup, :calc_expression_1)
+assert_equal calc_operation(test_operation_1.dup, :calc_expression_1), 51
+assert_equal calc_operation(test_operation_2.dup, :calc_expression_1), 26
+assert_equal calc_operation(test_operation_3.dup, :calc_expression_1), 437
+assert_equal calc_operation(test_operation_4.dup, :calc_expression_1), 12240
+assert_equal calc_operation(test_operation_5.dup, :calc_expression_1), 13632
 
-puts calc_operation(test_operation_1.dup, :calc_expression_2)
-puts calc_operation(test_operation_2.dup, :calc_expression_2)
-puts calc_operation(test_operation_3.dup, :calc_expression_2)
-puts calc_operation(test_operation_4.dup, :calc_expression_2)
-puts calc_operation(test_operation_5.dup, :calc_expression_2)
+assert_equal calc_operation(test_operation_1.dup, :calc_expression_2), 51
+assert_equal calc_operation(test_operation_2.dup, :calc_expression_2), 46
+assert_equal calc_operation(test_operation_3.dup, :calc_expression_2), 1445
+assert_equal calc_operation(test_operation_4.dup, :calc_expression_2), 669060
+assert_equal calc_operation(test_operation_5.dup, :calc_expression_2), 23340
 
 def sum_expressions(input, fn)
   input.reduce(0) { |acc, operation| acc += calc_operation(operation.dup, fn) }

@@ -1,3 +1,6 @@
+require 'test/unit/assertions'
+include Test::Unit::Assertions
+
 test_arr = [
   'F10',
   'N3',
@@ -140,8 +143,8 @@ def part2(input)
   Ship.new().run(input, :waypoint_navigate).manhattan
 end
 
-puts part1(test_arr)
+assert_equal part1(test_arr), 25
 puts part1(input_arr)
 
-puts part2(test_arr)
+assert_equal part2(test_arr), 286
 puts part2(input_arr)

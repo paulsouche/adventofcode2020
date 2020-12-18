@@ -1,3 +1,6 @@
+require 'test/unit/assertions'
+include Test::Unit::Assertions
+
 test_arr = [
   'FBFBBFFRLR',
   'BFFFBBFRRR',
@@ -78,6 +81,6 @@ def get_available_seat_id(input)
 end
 
 
-puts max_seat_id(test_arr)
+assert_equal max_seat_id(test_arr), 820
 puts max_seat_id(input_arr)
 puts get_available_seat_id(input_arr)

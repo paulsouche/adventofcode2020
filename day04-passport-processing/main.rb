@@ -1,3 +1,6 @@
+require 'test/unit/assertions'
+include Test::Unit::Assertions
+
 test_arr = [
   "ecl:gry pid:860033327 eyr:2020 hcl:#fffffd\nbyr:1937 iyr:2017 cid:147 hgt:183cm",
   "iyr:2013 ecl:amb cid:350 eyr:2023 pid:028048884\nhcl:#cfa07d byr:1929",
@@ -66,8 +69,8 @@ def count_valid_passports(input, filter)
   input.filter { |passport| method(filter).call(passport) }.length
 end
 
-puts count_valid_passports(test_arr, :contains_required_fields?)
+assert_equal count_valid_passports(test_arr, :contains_required_fields?), 2
 puts count_valid_passports(input_arr, :contains_required_fields?)
 
-puts count_valid_passports(test_arr_2, :are_valid?)
+assert_equal count_valid_passports(test_arr_2, :are_valid?), 4
 puts count_valid_passports(input_arr, :are_valid?)

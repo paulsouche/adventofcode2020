@@ -1,4 +1,6 @@
 require 'ostruct'
+require 'test/unit/assertions'
+include Test::Unit::Assertions
 
 test_arr = [
   '..##.......',
@@ -74,8 +76,8 @@ def check_slopes(input, slopes)
   slopes.map { |s| count_trees(input, s) }.reduce(:*)
 end
 
-puts count_trees(test_arr, input_slope)
+assert_equal count_trees(test_arr, input_slope), 7
 puts count_trees(input_arr, input_slope)
 
-puts check_slopes(test_arr, input_slopes)
+assert_equal check_slopes(test_arr, input_slopes), 336
 puts check_slopes(input_arr, input_slopes)

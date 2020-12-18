@@ -1,4 +1,6 @@
 require 'ostruct'
+require 'test/unit/assertions'
+include Test::Unit::Assertions
 
 test_arr = [
   "abc",
@@ -44,8 +46,8 @@ def sum_counts(input, group_sum)
   input.map { |group| method(group_sum).call(group) }.reduce(:+)
 end
 
-puts sum_counts(test_arr, :group_sum_all_yes_answers)
+assert_equal sum_counts(test_arr, :group_sum_all_yes_answers), 11
 puts sum_counts(input_arr, :group_sum_all_yes_answers)
 
-puts sum_counts(test_arr, :group_sum_all_common_yes_answers)
+assert_equal sum_counts(test_arr, :group_sum_all_common_yes_answers), 6
 puts sum_counts(input_arr, :group_sum_all_common_yes_answers)

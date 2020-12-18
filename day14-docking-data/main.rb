@@ -1,4 +1,6 @@
 require 'ostruct'
+require 'test/unit/assertions'
+include Test::Unit::Assertions
 
 test_arr = [
   'mask = XXXXXXXXXXXXXXXXXXXXXXXXXXXXX1XXXX0X',
@@ -105,8 +107,8 @@ def part2(input)
   Program.new(input).run(:write_memory_adress_decoder).memory_sum
 end
 
-puts part1(test_arr)
+assert_equal part1(test_arr), 165
 puts part1(input_arr)
 
-puts part2(test_arr_2)
+assert_equal part2(test_arr_2), 208
 puts part2(input_arr)

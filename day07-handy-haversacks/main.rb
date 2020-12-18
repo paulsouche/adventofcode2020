@@ -1,4 +1,6 @@
 require 'ostruct'
+require 'test/unit/assertions'
+include Test::Unit::Assertions
 
 input_test = [
   'light red bags contain 1 bright white bag, 2 muted yellow bags.',
@@ -92,9 +94,9 @@ def count_allowed_bags(input, bag_kind)
   count_allowed_bags_recc(parse_input(input), bag_kind, 1) - 1
 end
 
-puts count_bag_colors(input_test, input_bag)
+assert_equal count_bag_colors(input_test, input_bag), 4
 puts count_bag_colors(input_arr, input_bag)
 
-puts count_allowed_bags(input_test, input_bag)
-puts count_allowed_bags(input_test_2, input_bag)
+assert_equal count_allowed_bags(input_test, input_bag), 32
+assert_equal count_allowed_bags(input_test_2, input_bag), 126
 puts count_allowed_bags(input_arr, input_bag)

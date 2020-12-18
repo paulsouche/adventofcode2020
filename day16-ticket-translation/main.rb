@@ -1,4 +1,6 @@
 require 'ostruct'
+require 'test/unit/assertions'
+include Test::Unit::Assertions
 
 test_arr = [
   "class: 1-3 or 5-7\nrow: 6-11 or 33-44\nseat: 13-40 or 45-50",
@@ -91,8 +93,8 @@ def calculate_departure(input)
   end
 end
 
-puts count_invalid_tickets(test_arr)
+assert_equal count_invalid_tickets(test_arr), 71
 puts count_invalid_tickets(input_arr)
 
-puts calculate_departure(test_arr_2)
+assert_equal calculate_departure(test_arr_2), 1
 puts calculate_departure(input_arr)

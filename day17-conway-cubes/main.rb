@@ -1,4 +1,6 @@
 require 'ostruct'
+require 'test/unit/assertions'
+include Test::Unit::Assertions
 
 test_arr = [
   '.#.',
@@ -229,8 +231,8 @@ def play(input, dimensions)
   GameOfLife.new(input, dimensions).run(6).count_active_cubes
 end
 
-puts play(test_arr, 3)
+assert_equal play(test_arr, 3), 112
 puts play(input_arr, 3)
 
-puts play(test_arr, 4)
+assert_equal play(test_arr, 4), 848
 puts play(input_arr, 4)

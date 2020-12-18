@@ -1,4 +1,6 @@
 require 'ostruct'
+require 'test/unit/assertions'
+include Test::Unit::Assertions
 
 test_arr = [
   'L.LL.LL.LL',
@@ -145,8 +147,8 @@ def part2(input)
   GameOfLife.new(input).run(:count_occupied_visible_seats, 5)
 end
 
-puts part1(test_arr)
+assert_equal part1(test_arr), 37
 puts part1(input_arr)
 
-puts part2(test_arr)
+assert_equal part2(test_arr), 26
 puts part2(input_arr)

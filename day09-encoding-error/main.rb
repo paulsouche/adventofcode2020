@@ -1,3 +1,6 @@
+require 'test/unit/assertions'
+include Test::Unit::Assertions
+
 test_arr = [
   35,
   20,
@@ -70,8 +73,8 @@ def find_encryption_weakness(input, preamble_length)
   end
 end
 
-puts find_invalid_number(test_arr, 5)
+assert_equal find_invalid_number(test_arr, 5), 127
 puts find_invalid_number(input_arr, 25)
 
-puts find_encryption_weakness(test_arr, 5)
+assert_equal find_encryption_weakness(test_arr, 5), 62
 puts find_encryption_weakness(input_arr, 25)
